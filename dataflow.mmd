@@ -1,0 +1,17 @@
+flowchart LR
+    A[Calculator UI]
+    B[Backend API]
+    C[CalculatorService]
+    D[HistoryService]
+    E[Browser state]
+
+    A -->|POST /calculate| B
+    B -->|evaluate expression| C
+    C -->|return result| B
+    B -->|save history| D
+    D -->|store entry| D
+    B -->|response result| A
+    A -->|update display| E
+    A -->|GET /history| B
+    B -->|return history list| A
+    A -->|render history| E
